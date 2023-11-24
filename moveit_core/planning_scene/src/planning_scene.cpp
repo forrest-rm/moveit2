@@ -1981,7 +1981,7 @@ const std_msgs::msg::ColorRGBA& PlanningScene::getObjectColor(const std::string&
   return EMPTY;
 }
 
-const std::optional<std_msgs::msg::ColorRGBA> PlanningScene::getOriginalObjectColor(const std::string& object_id) const
+std::optional<std_msgs::msg::ColorRGBA> PlanningScene::getOriginalObjectColor(const std::string& object_id) const
 {
   if (original_object_colors_)
   {

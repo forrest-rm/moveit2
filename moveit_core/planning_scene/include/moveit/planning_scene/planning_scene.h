@@ -743,7 +743,7 @@ public:
   bool hasObjectColor(const std::string& id) const;
 
   const std_msgs::msg::ColorRGBA& getObjectColor(const std::string& id) const;
-  const std::optional<std_msgs::msg::ColorRGBA> getOriginalObjectColor(const std::string& id) const;
+  std::optional<std_msgs::msg::ColorRGBA> getOriginalObjectColor(const std::string& id) const;
   void setObjectColor(const std::string& id, const std_msgs::msg::ColorRGBA& color);
   void removeObjectColor(const std::string& id);
   void getKnownObjectColors(ObjectColorMap& kc) const;
