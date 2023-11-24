@@ -53,6 +53,7 @@
 #include <octomap_msgs/msg/octomap_with_pose.hpp>
 #include <memory>
 #include <functional>
+#include <optional>
 #include <thread>
 #include <variant>
 #include <rclcpp/rclcpp.hpp>
@@ -742,6 +743,7 @@ public:
   bool hasObjectColor(const std::string& id) const;
 
   const std_msgs::msg::ColorRGBA& getObjectColor(const std::string& id) const;
+  const std::optional<std_msgs::msg::ColorRGBA> getOriginalObjectColor(const std::string& id) const;
   void setObjectColor(const std::string& id, const std_msgs::msg::ColorRGBA& color);
   void removeObjectColor(const std::string& id);
   void getKnownObjectColors(ObjectColorMap& kc) const;
@@ -1015,7 +1017,9 @@ private:
   StateFeasibilityFn state_feasibility_;
   MotionFeasibilityFn motion_feasibility_;
 
+  // Maps of current and original object colors (to manage attaching/detaching objects)
   std::unique_ptr<ObjectColorMap> object_colors_;
+  std::unique_ptr<ObjectColorMap> original_object_colors_;
 
   // a map of object types
   std::unique_ptr<ObjectTypeMap> object_types_;
